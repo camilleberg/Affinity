@@ -7,7 +7,11 @@ library(lubridate)
 
 # removing extraneous variables and setting proper wd
 rm(list = ls())
+setwd("~/GitHub/Affinity")
+
+
 today <- format(Sys.Date(), "%Y.%m.%d")
+
 
 read_affinity_tables <- function(location_type) {
   
