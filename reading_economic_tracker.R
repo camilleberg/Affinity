@@ -12,8 +12,6 @@ setwd("~/GitHub/Affinity")
 
 today <- format(Sys.Date(), "%Y.%m.%d")
 
-location_type <- "County"
-
 read_affinity_tables <- function(location_type) {
   
   dat <- read.csv(paste0("data/Affinity - ", paste0(location_type), " - Daily.csv"))
@@ -44,13 +42,12 @@ read_affinity_tables <- function(location_type) {
 }
 
 # creating one DF
-
 df <- left_join(read_affinity_tables("County"), 
                 left_join(read_affinity_tables("State"), read_affinity_tables("National"), by = "Date"), by = "Date") %>%
   select(week, Date, spend_all, spend_all.x, spend_all.y) 
 
-colnames(df) <- c("Week", "Day", "Suffolk", "MA", "US")
 
+colnames(df) <- c("Week", "Day", "Suffolk", "MA", "US")
 # writing and opening the fiel in excel 
-write.csv(df, paste0("output/consumer_spending", today, ".csv"))
+write.csv(df, paste0("output/consumer_spending_", today, ".csv"))
 
