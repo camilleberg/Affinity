@@ -11,6 +11,7 @@ setwd("~/GitHub/Affinity")
 
 
 today <- format(Sys.Date(), "%Y.%m.%d")
+today <- "2022.06.10"
 
 read_affinity_tables <- function(location_type) {
   
@@ -50,4 +51,6 @@ df <- left_join(read_affinity_tables("County"),
 colnames(df) <- c("Week", "Day", "Suffolk", "MA", "US")
 # writing and opening the fiel in excel 
 write.csv(df, paste0("output/consumer_spending_", today, ".csv"))
+
+check <- left_join(read_affinity_tables("State"), read_affinity_tables("National"), by = "Date")
 
