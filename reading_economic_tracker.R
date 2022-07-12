@@ -11,7 +11,6 @@ setwd("~/GitHub/Affinity")
 
 
 today <- format(Sys.Date(), "%Y.%m.%d")
-today <- "2022.06.10"
 
 read_affinity_tables <- function(location_type) {
   
