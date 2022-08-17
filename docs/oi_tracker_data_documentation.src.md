@@ -7,7 +7,7 @@ numbersections: true
 title: |
   | Opportunity Insights Economic Tracker
   | Data Documentation
-subtitle: last updated on 2022-07-02
+subtitle: last updated on 2022-08-13
 documentclass: scrartcl
 ---
 
@@ -37,7 +37,7 @@ Please note that both the data and this data documentation is updated regularly 
 
 **Date Range:** January 13th 2020 until the most recent date available.
 
-**Data Frequency:** Data is daily until the final two weeks of the series, and the daily data is presented as a 7 day lookback moving average. For the final two weeks of the series, the data is weekly and presented as weekly data points.
+**Data Frequency:** Data is daily until June 5th 2022, presented as a 7-day lookback moving average. Since June 5th 2022 we only receive weekly data on consumer spending, and the data is presented as weekly data points.
 
 **Indexing Period:** January 4th to January 31st 2020
 
@@ -81,6 +81,8 @@ Please note that both the data and this data documentation is updated regularly 
 **Indexing Period:** January 4th to January 31st 2020
 
 **Indexing Type:** Seasonally adjusted change since January 2020. We calculate the change relative to the January index period: 2019 data is indexed relative to January 2019, data in 2020 onward is indexed relative to January 2020. We then seasonally adjust by dividing by the indexed 2019 value, which represents the difference between the change since January 2020 compared to the change since January observed since 2019. Weeks that span the end of the year are treated as the first week of the later year.
+
+In all series we adjust for holidays while seasonally adjusting a given series to ensure that we are comparing weeks containing a significant holiday to a corresponding week containing that holiday. This adjustment has three components: (1) weeks with the same holiday are always compared to each other; (2) weeks before the same holiday are always compared to each other; and (3) weeks after holidays are always compared to each other. Thus, even if a holiday does not fall in the same week in the year being normed and the comparison year, weeks will be aligned when compared to each other.
 
 **Geographies:** National, State, County, Metro
 
@@ -126,6 +128,8 @@ To reduce outliers, we manually exclude some state x industry breakdowns that pr
 
 **Indexing Type:** Seasonally adjusted change since January 2020. We calculate the change relative to the January index period: 2019 data is indexed relative to January 2019, data in 2020 onward is indexed relative to January 2020. We then seasonally adjust by dividing by the indexed 2019 value, which represents the difference between the change since January 2020 compared to the change since January observed since 2019. Weeks that span the end of the year are treated as the first week of the later year.
 
+In all series we adjust for holidays while seasonally adjusting a given series to ensure that we are comparing weeks containing a significant holiday to a corresponding week containing that holiday. This adjustment has three components: (1) weeks with the same holiday are always compared to each other; (2) weeks before the same holiday are always compared to each other; and (3) weeks after holidays are always compared to each other. Thus, even if a holiday does not fall in the same week in the year being normed and the comparison year, weeks will be aligned when compared to each other.
+
 **Geographies:** National, State, County, Metro
 
 **Breakdowns:**  
@@ -170,7 +174,7 @@ To reduce outliers, we manually exclude some state x industry breakdowns that pr
 
 **Indexing Type:** Change relative to the January 2020 index period, not seasonally adjusted.
 
-**Geographies:** National, State, Metro.
+**Geographies:** National, State, County, Metro.
 
 **Breakdowns:**  
 
@@ -190,7 +194,7 @@ To reduce outliers, we manually exclude some state x industry breakdowns that pr
     - Considerable - Jobzone 4
     - Extensive - Jobzone 5
 
-**Data Masking:** In order to avoid extreme outliers, we calculate a cutoff of one standard deviation above the 97th percentile of the state-level data for each variable and mask values that exceed this threshold.
+**Data Masking:** In order to avoid extreme outliers, we calculate a cutoff of one standard deviation above the 97th percentile of the state-level data for each variable and mask values that exceed this threshold. Additionally, at the county level, only subgroup data for the 200 largest counties is able to be disclosed for firm data privacy reasons. For the remaining counties' subgroups, all values are imputed from the share of state postings that are made up of a given subgrouping multiplied by the number of county postings in total.
 
 ## Employment  
 
@@ -369,7 +373,7 @@ To ensure privacy, the data we obtain are masked such that any county with fewer
 
 **Summary:** The daily count and rate per 100,000 people of confirmed COVID-19 cases, deaths, hospitalizations, or tests performed.
 
-**Data Source:** [The New York Times](https://github.com/nytimes/covid-19-data), [The Johns Hopkins Coronavirus Resource Center](https://github.com/govex/COVID-19/tree/master/data_tables/testing_data), [The Centers for Disease Control and Prevention](https://covid.cdc.gov/covid-data-tracker/#datatracker-home), [U.S. Department of Health & Human Services](https://beta.healthdata.gov/Hospital/COVID-19-Reported-Patient-Impact-and-Hospital-Capa/g62h-syeh)
+**Data Source:** [The New York Times](https://github.com/nytimes/covid-19-data), [The Johns Hopkins Coronavirus Resource Center](https://github.com/govex/COVID-19/tree/master/data_tables/testing_data), [U.S. Department of Health & Human Services](https://beta.healthdata.gov/Hospital/COVID-19-Reported-Patient-Impact-and-Hospital-Capa/g62h-syeh)
 
 **Update Frequency:** Daily
 
@@ -461,6 +465,6 @@ Time Away From Home is calculated by multiplying the mean time spent inside home
 
 **Data Source(s):** New York Times, MCH Strategic Data, the Institute for Health Metrics and Evaluation, and local news and government sources.
 
-**Update Frequency:** Monthly  
+**Update Frequency:** This file is not being updated with data beyond June 30th 2022.  
 
 **Geographies:** State

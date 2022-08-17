@@ -7,7 +7,7 @@ numbersections: true
 title: |
   | Opportunity Insights Economic Tracker
   | Data Dictionary
-subtitle: last updated on 2022-06-29
+subtitle: last updated on 2022-07-27
 documentclass: scrartcl
 ---  
 
@@ -180,7 +180,7 @@ Job postings data from [Burning Glass Technologies](https://www.burning-glass.co
 
 ### COVID
 
-COVID cases, deaths, tests, and vaccination numbers are from the [CDC](https://covid.cdc.gov/covid-data-tracker/#datatracker-home).
+COVID cases and deaths numbers are from the [New York Times](https://github.com/nytimes/covid-19-data), hospitalizations numbers are from the [U.S. Department of Health and Human Services](https://beta.healthdata.gov/Hospital/COVID-19-Reported-Patient-Impact-and-Hospital-Capa/g62h-syeh), tests numbers are from [Johns Hopkins University](https://github.com/govex/COVID-19), and vaccination numbers are from the [Centers for Disease Control and Prevention](https://covid.cdc.gov/covid-data-tracker/#datatracker-home).
 
 - `case_rate`: Confirmed COVID-19 cases per 100,000 people, seven day moving average.
     - `case_count`: Confirmed COVID-19 cases, seven day moving average.
@@ -325,16 +325,9 @@ To ensure privacy, the results for some counties are masked. Where possible, mas
 
 Key state-level policy dates relevant for changes in other series trends and values.
 
-- `statename`: The name of the U.S. state
-- `statefips`: 2-digit FIPS code of the U.S. state
-- `schools_closed`: The date at which the state ordered all public K-12 schools statewide to physically close
-- `nonessential_biz_closed`: The date on which the state government ordered all nonessential businesses to close
-- `stayathome_start`: The date on which the state government told residents to stay home, save for excepted activities
-- `regional_stayathome_end`: The date on which the state’s order telling residents to stay home expired, was lifted, or relaxed for one or more regions in the state
-- `statewide_stayathome_end`: The date on which the state’s order telling residents to stay home expired, was lifted, or changed from mandatory to recommended. Either for the entire state all at once, or for the very last locality with a remaining stay at home order.
-- `regional_biz_opened`: The date on which the state began reopening significant businesses (typically in-store retail or non-essential manufacturing) for one or more regions in the state
-- `statewide_biz_opened`: The date on which the state began reopening significant businesses (typically in-store retail or non-essential manufacturing). Either for the entire state all at once, or for the very last locality which hadn’t yet reopened any businesses.
-- `regional_biz_reclosed`: The date on which the state began reclosing businesses (of any sector) that had been reopened previously for one or more regions in the state
-- `statewide_biz_reclosed`: The date on which the state began reclosing businesses (of any sector) that had been reopened previously. Either for the entire state all at once, or for the very last locality which hadn’t yet reclosed any businesses.
-- `state_milestone#`: The dates on which the state enacted significant new policy milestones that go beyond the existing policy dates tracked. Examples include, ending a reclosure, enacting a new regional reopening system, or issuing a stay-at-home advisory, or enacting an additional reclosure after a state's first. The column name suffix indicates both the chronological order of the milestones within the particular state and corresponds to the particular milestone type as indicated in the description&#35; column.
-- `description#`: A description of the policy action represented by the state_milestone&#35; column with the same suffix number. For instance state_milestone1 is described in description1.
+- `statefips`: 2-digit FIPS code of the U.S. state a milestone was recorded in
+- `date`: Date the policy milestone occurred
+- `policy_description`: Description of policy milestone
+- `schools_first_closed`: Whether a milestone is the date at which the state first ordered all public K-12 schools statewide to physically close
+- `nonessential_biz_first_closed`: Whether a milestone is the date on which the state government first ordered all nonessential businesses to close statewide
+- `stayathome_first_start`: Whether a milestone is the date on which the state government first told residents to stay home, save for excepted activities statewide

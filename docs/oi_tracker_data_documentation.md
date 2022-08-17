@@ -2,7 +2,7 @@
 <header id="title-block-header">
 <h1 class="title"><div class="line-block">Opportunity Insights Economic Tracker<br />
 Data Documentation</div></h1>
-<p class="subtitle">last updated on 2022-07-02</p>
+<p class="subtitle">last updated on 2022-08-13</p>
 </header>
 <p><a href="https://raw.githubusercontent.com/OpportunityInsights/EconomicTracker/main/docs/oi_tracker_data_documentation.pdf"><img src="pdf-icon.svg" alt="PDF Download" width="50" style="display:inline;"/> Click here to download a PDF version of this document</a></p>
 <h1 id="overview">Overview</h1>
@@ -19,7 +19,7 @@ Data Documentation</div></h1>
 <p><strong>Data Source:</strong> <a href="https://www.affinity.solutions/dataforgood">Affinity Solutions</a></p>
 <p><strong>Update Frequency:</strong> Weekly</p>
 <p><strong>Date Range:</strong> January 13th 2020 until the most recent date available.</p>
-<p><strong>Data Frequency:</strong> Data is daily until the final two weeks of the series, and the daily data is presented as a 7 day lookback moving average. For the final two weeks of the series, the data is weekly and presented as weekly data points.</p>
+<p><strong>Data Frequency:</strong> Data is daily until June 5th 2022, presented as a 7-day lookback moving average. Since June 5th 2022 we only receive weekly data on consumer spending, and the data is presented as weekly data points.</p>
 <p><strong>Indexing Period:</strong> January 4th to January 31st 2020</p>
 <p><strong>Indexing Type:</strong> Seasonally adjusted change since January 2020. We calculate the change relative to the January index period: 2019 data is indexed relative to January 2019, data in 2020 onward is indexed relative to January 2020. We then seasonally adjust by dividing by the indexed 2019 value, which represents the difference between the change since January 2020 compared to the change since January observed since 2019. We account for differences in the dates of federal holidays between 2019 and 2020 by shifting the 2019 reference data to align the holidays before performing the year-over-year division.</p>
 <p><strong>Geographies:</strong> National, State, County, Metro</p>
@@ -51,6 +51,7 @@ Data Documentation</div></h1>
 <p><strong>Data Frequency:</strong> Weekly</p>
 <p><strong>Indexing Period:</strong> January 4th to January 31st 2020</p>
 <p><strong>Indexing Type:</strong> Seasonally adjusted change since January 2020. We calculate the change relative to the January index period: 2019 data is indexed relative to January 2019, data in 2020 onward is indexed relative to January 2020. We then seasonally adjust by dividing by the indexed 2019 value, which represents the difference between the change since January 2020 compared to the change since January observed since 2019. Weeks that span the end of the year are treated as the first week of the later year.</p>
+<p>In all series we adjust for holidays while seasonally adjusting a given series to ensure that we are comparing weeks containing a significant holiday to a corresponding week containing that holiday. This adjustment has three components: (1) weeks with the same holiday are always compared to each other; (2) weeks before the same holiday are always compared to each other; and (3) weeks after holidays are always compared to each other. Thus, even if a holiday does not fall in the same week in the year being normed and the comparison year, weeks will be aligned when compared to each other.</p>
 <p><strong>Geographies:</strong> National, State, County, Metro</p>
 <p><strong>Breakdowns:</strong></p>
 <ul>
@@ -82,6 +83,7 @@ Data Documentation</div></h1>
 <p><strong>Data Frequency:</strong> Weekly</p>
 <p><strong>Indexing Period:</strong> January 4th to January 31st 2020</p>
 <p><strong>Indexing Type:</strong> Seasonally adjusted change since January 2020. We calculate the change relative to the January index period: 2019 data is indexed relative to January 2019, data in 2020 onward is indexed relative to January 2020. We then seasonally adjust by dividing by the indexed 2019 value, which represents the difference between the change since January 2020 compared to the change since January observed since 2019. Weeks that span the end of the year are treated as the first week of the later year.</p>
+<p>In all series we adjust for holidays while seasonally adjusting a given series to ensure that we are comparing weeks containing a significant holiday to a corresponding week containing that holiday. This adjustment has three components: (1) weeks with the same holiday are always compared to each other; (2) weeks before the same holiday are always compared to each other; and (3) weeks after holidays are always compared to each other. Thus, even if a holiday does not fall in the same week in the year being normed and the comparison year, weeks will be aligned when compared to each other.</p>
 <p><strong>Geographies:</strong> National, State, County, Metro</p>
 <p><strong>Breakdowns:</strong></p>
 <ul>
@@ -113,7 +115,7 @@ Data Documentation</div></h1>
 <p><strong>Data Frequency:</strong> Weekly data points, with each week ending on Friday.</p>
 <p><strong>Indexing Period:</strong> January 4th to January 31st 2020</p>
 <p><strong>Indexing Type:</strong> Change relative to the January 2020 index period, not seasonally adjusted.</p>
-<p><strong>Geographies:</strong> National, State, Metro.</p>
+<p><strong>Geographies:</strong> National, State, County, Metro.</p>
 <p><strong>Breakdowns:</strong></p>
 <ul>
 <li><p><em>Industry</em>, by <a href="https://www.bls.gov/sae/additional-resources/naics-supersectors-for-ces-program.htm">NAICS supersector</a>.</p>
@@ -133,7 +135,7 @@ Data Documentation</div></h1>
 <li>Extensive - Jobzone 5</li>
 </ul></li>
 </ul>
-<p><strong>Data Masking:</strong> In order to avoid extreme outliers, we calculate a cutoff of one standard deviation above the 97th percentile of the state-level data for each variable and mask values that exceed this threshold.</p>
+<p><strong>Data Masking:</strong> In order to avoid extreme outliers, we calculate a cutoff of one standard deviation above the 97th percentile of the state-level data for each variable and mask values that exceed this threshold. Additionally, at the county level, only subgroup data for the 200 largest counties is able to be disclosed for firm data privacy reasons. For the remaining counties’ subgroups, all values are imputed from the share of state postings that are made up of a given subgrouping multiplied by the number of county postings in total.</p>
 <h2 id="employment">Employment</h2>
 <p><strong>Summary:</strong> Number of active employees, aggregating information from multiple data providers. This series is based on firm-level payroll data from Paychex and Intuit, worker-level data on employment and earnings from Earnin, and firm-level timesheet data from Kronos.</p>
 <p><strong>Data Source:</strong> <a href="https://www.paychex.com/">Paychex</a>, <a href="https://www.intuit.com/">Intuit</a>, <a href="https://www.earnin.com/">Earnin</a>, <a href="https://www.kronos.com/">Kronos</a></p>
@@ -267,7 +269,7 @@ Data Documentation</div></h1>
 <p><strong>Data masking:</strong> Data is masked such that any county with fewer than two districts, fewer than three schools, or fewer than 50 students on average using Zearn Math during the period between January 6 and February 7 is excluded. Masked county level data is replaced with the commuting zone average so long as there are more than two school districts in the commuting zone or at least three schools in the commuting zone. If these condition are not met the county-level data remains masked. Additionally we exclude schools who did not have at least 5 students using Zearn Math for at least one week from January 6 to February 7.</p>
 <h2 id="covid-19-infections">COVID-19 Infections</h2>
 <p><strong>Summary:</strong> The daily count and rate per 100,000 people of confirmed COVID-19 cases, deaths, hospitalizations, or tests performed.</p>
-<p><strong>Data Source:</strong> <a href="https://github.com/nytimes/covid-19-data">The New York Times</a>, <a href="https://github.com/govex/COVID-19/tree/master/data_tables/testing_data">The Johns Hopkins Coronavirus Resource Center</a>, <a href="https://covid.cdc.gov/covid-data-tracker/#datatracker-home">The Centers for Disease Control and Prevention</a>, <a href="https://beta.healthdata.gov/Hospital/COVID-19-Reported-Patient-Impact-and-Hospital-Capa/g62h-syeh">U.S. Department of Health &amp; Human Services</a></p>
+<p><strong>Data Source:</strong> <a href="https://github.com/nytimes/covid-19-data">The New York Times</a>, <a href="https://github.com/govex/COVID-19/tree/master/data_tables/testing_data">The Johns Hopkins Coronavirus Resource Center</a>, <a href="https://beta.healthdata.gov/Hospital/COVID-19-Reported-Patient-Impact-and-Hospital-Capa/g62h-syeh">U.S. Department of Health &amp; Human Services</a></p>
 <p><strong>Update Frequency:</strong> Daily</p>
 <p><strong>Date Range:</strong> January 22nd 2020 until the most recent date available.</p>
 <p><strong>Data Frequency:</strong> Daily, presented as a 7-day moving average</p>
@@ -325,6 +327,6 @@ Data Documentation</div></h1>
 <h2 id="policy-milestones">Policy Milestones</h2>
 <p><strong>Summary:</strong> Key state-level policy dates relevant for changes in other series trends and values. Includes start and end of stay at home order dates, public school closure dates, and non-essential business closure and re-opening dates.</p>
 <p><strong>Data Source(s):</strong> New York Times, MCH Strategic Data, the Institute for Health Metrics and Evaluation, and local news and government sources.</p>
-<p><strong>Update Frequency:</strong> Monthly</p>
+<p><strong>Update Frequency:</strong> This file is not being updated with data beyond June 30th 2022.</p>
 <p><strong>Geographies:</strong> State</p>
 </body>
