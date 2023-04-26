@@ -7,7 +7,7 @@ numbersections: true
 title: |
   | Opportunity Insights Economic Tracker
   | Data Revisions
-subtitle: last updated on 2022-12-16
+subtitle: last updated on 2023-04-14
 documentclass: scrartcl
 ---
 
@@ -210,6 +210,15 @@ The Employment data was revised in several ways.
 
 - **Revisions to the adjustment for minimum wage changes**: We revised how we adjust the series in states that increased their minimum wage at the end of 2020 (CA, NY, MA). We begin by calculating the percentage change in the number of employees in each state x industry (2-digit NAICS) cell from December 4 2020 onwards for the first two wage quartiles combined. From December 4 2020 onwards, for the first two wage quartiles in minimum wage change states, we impute the trend in each county x industry x wage quartile cell using the below-median income employment trend in their own state x industry cell. Since employment in the first wage quartile recovered less than employment in the second wage quartile in 2021, an imputation that aggregates the trends in the first and second wage quartiles tends to overstate the recovery in the first quartile and understate the recovery in the second quartile. As such, we further rescale the state x industry below-median income trend separately for each wage quartile, using the coefficient from the regression of that quartile’s employment change on the below-median income employment change in non-minimum wage-change states without a constant between December 4 2020 and December 3 2021. We then aggregate the adjusted employment counts to the relevant geographies (e.g. state; national) before calculating the change in employment since January 2020.
 
+### Revisions on April 14th 2023
+
+The Employment data was revised on April 14th 2023 to correct a data processing error. 
+
+From December 16th 2022 to April 14th 2023, there was a bug in the code adjusting for discontinuities in the Paychex data when quartile thresholds cross integer wages. For more details on this adjustment see Online Appendix E.2 of Chetty, Friedman, Hendren and Stepner (April 2023). During this period, the adjustment for the mass of employees at wage $X was incorrectly being made using the mass of employees at the lower wage $X-1. These discontinuities were therefore incompletely smoothed.
+
+After correcting the code, the employment trends are smoother around these discontinuities. The overall trends in employment changes over time are unchanged.
+
+
 ## Unemployment Claims
 
 ### Revisions on July 29th 2021
@@ -233,6 +242,10 @@ Previously we pulled reported cases and deaths from the New York Times' [COVID-1
 ### Revisions on August 4th 2021
 
 Previously we pulled reported cases, deaths, and tests at the county level from the Centers For Disease Control and Prevention's COVID Data Tracker and aggregated to other geographies. On July 17th the Centers For Disease Control and Prevention began suppressing reported cases and deaths making aggregations across counties no longer feasible and we began to instead pull reported cases and deaths from the New York Times' [COVID-19 database](https://github.com/nytimes/covid-19-data), state level reported tests from the Johns Hopkins Coronavirus Resource Center's [U.S. testing database](https://github.com/govex/COVID-19/tree/master/data_tables/testing_data), and county level reported tests from [The Centers for Disease Control and Prevention](https://covid.cdc.gov/covid-data-tracker/#datatracker-home).    
+
+### Revisions on April 11th 2023
+
+On 2023-03-23 the New York Times discontinued its COVID tracking efforts and published the last updates to its database tracking COVID cases and deaths in light of increased tracking and reporting by government agencies like The Centers for Disease Control and Prevention. For COVID-19 cases and deaths data published after 2023-03-23 we now make use of weekly data published by [The Centers for Disease Control and Prevention](https://covid.cdc.gov/covid-data-tracker/#datatracker-home). In order to integrate the new weekly sums published by [The Centers for Disease Control and Prevention](https://covid.cdc.gov/covid-data-tracker/#datatracker-home) with the previous daily values published by [New York Times](https://github.com/nytimes/covid-19-data) we scale all cases and deaths values to a 7 day rolling sum rather than a 7 day rolling average as previously reported.
 
 ## COVID-19 Vaccinations
 
